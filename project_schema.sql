@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS project;
 
 CREATE TABLE project(
-  project_id INT NOT NULL,
+  project_id INT NOT NULL AUTO_INCREMENT,
   project_name VARCHAR(128) NOT NULL,
   estimated_hours DECIMAL(7,2),
   actual_hours DECIMAL(7,2),
@@ -15,7 +15,7 @@ CREATE TABLE project(
 );
 
 CREATE TABLE category(
-  category_id INT NOT NULL,
+  category_id INT NOT NULL AUTO_INCREMENT,
   category_name VARCHAR(128) NOT NULL,
   PRIMARY KEY (category_id)
 );
@@ -29,7 +29,7 @@ CREATE TABLE project_category(
 );
 
 CREATE TABLE step(
-  step_id INT NOT NULL,
+  step_id INT NOT NULL AUTO_INCREMENT,
   project_id INT NOT NULL,
   step_text TEXT NOT NULL,
   step_order INT NOT NULL,
@@ -38,12 +38,14 @@ CREATE TABLE step(
 );
 
 CREATE TABLE material(
-  material_id INT NOT NULL,
+  material_id INT NOT NULL AUTO_INCREMENT,
   project_id INT NOT NULL,
   material_name VARCHAR(128),
   num_required INT,
-  cost DECIMAL(7,2)
+  cost DECIMAL(7,2),
   PRIMARY KEY (material_id),
   FOREIGN KEY (project_id) REFERENCES project (project_id) ON DELETE CASCADE
 );
+
+
 
