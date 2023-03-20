@@ -28,6 +28,7 @@ CREATE TABLE project_category(
   UNIQUE KEY (project_id, category_id)
 );
 
+
 CREATE TABLE step(
   step_id INT NOT NULL AUTO_INCREMENT,
   project_id INT NOT NULL,
@@ -47,5 +48,14 @@ CREATE TABLE material(
   FOREIGN KEY (project_id) REFERENCES project (project_id) ON DELETE CASCADE
 );
 
-
+INSERT INTO project (project_name, estimated_hours, actual_hours, difficulty, notes) VALUES('hang a door', 4, 3, 3, 'use door hangers from home depot');
+INSERT INTO material (project_id, material_name, num_required, cost) VALUES(8, 'door hangers', 2, 20);
+INSERT INTO material (project_id, material_name, num_required, cost) VALUES(8, 'screws', 20, 4.50);
+INSERT INTO step (project_id, step_text, step_order) VALUES(8, 'align hangers on opening side of door frame', 1);
+INSERT INTO step (project_id, step_text, step_order) VALUES(8, 'screw hangers into frame', 2);
+INSERT INTO category (category_id, category_name) VALUES(1, 'doors and windows');
+INSERT INTO category (category_id, category_name) VALUES(2, 'repairs');
+INSERT INTO category (category_id, category_name) VALUES(3, 'Gardening');
+INSERT INTO project_category (project_id, category_id) VALUES(8,1);
+INSERT INTO project_category (project_id, category_id) VALUES(8,2);
 
